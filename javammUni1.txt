@@ -1,0 +1,28 @@
+//ES Energia
+int qtaWater = Input.getInt("Inserisci la qta di acqua in kg: ");
+int tempIniziale = Input.getInt("a quale temperatura(°C) si trova l'acqua l'acqua?");
+int tempFinale = Input.getInt("a quale temperatura (°C) vuoi portare l'acqua?");
+if(tempIniziale > tempFinale){
+	System.out.println("la temperatura di partenza è maggiore della temperatura di arrivo");
+}else{
+	int energia = (4184*qtaWater)*(tempFinale - tempIniziale);
+	System.out.println("L'energia necessaria per portare " + qtaWater + "KG d'acqua da " + tempIniziale + "gradi a" + tempFinale + " gradi è " + energia);
+}
+
+
+//ES gradi celsius Farhrenheit 
+double tCelsius = Input.getDouble("inserisci la temperatura in gradi celsius (°C): "); 
+double tFarhrenheit = ((9.0/5.0)*(tCelsius)) + 32; System.out.println("La temperatura in gradi Celsius è pari a: " + tCelsius); 
+System.out.println("La temperatura in gradi Farhrenheit è pari a: " + tFarhrenheit);
+
+//ES BMI
+double peso = Input.getDouble("inserisci il tuo peso(in libre): ");
+double altezza = Input.getDouble("inserisci ila tua altezza(in piedi): ");
+if(peso < 0 || altezza < 0){
+	System.out.println("Hai inserito uno o più valori negativi");
+}else{
+	double altezzaMetri = 0.3048 * altezza; 
+	double pesoKG = 0.453592 * peso;
+	double bmi = pesoKG/(altezzaMetri*altezzaMetri);
+	System.out.println("il tuo BMI è: " + bmi);
+}
