@@ -1,0 +1,64 @@
+//ESERCIZIO TRASLAMATRICE
+
+int[][] scorrimentoRighe(int[][] M) {
+	for(int i=0;i<M.length;i++){
+		int len = M[i].length;
+		if(i%2 == 0){ //la riga ha indice pari
+			int last = M[i][len - 1];
+            for (int j = len - 1; j > 0; j--) {
+                M[i][j] = M[i][j - 1];
+            }
+			M[i][0] = last;
+		}else{//la riga ha indice dispari
+			int first = M[i][0];
+            for (int j = 0; j < len - 1; j++) {
+                M[i][j] = M[i][j + 1];
+            }
+            M[i][len - 1] = first;
+		}
+	}
+	return M;
+}
+
+
+//ESERCIZIO MATRICI E SERPENTINE
+
+int[] visitaSerpentina(int[][] M) {
+	if (M == null || M.length == 0 || M[0].length == 0) {
+		return null;
+	}
+
+	int[] serpentina = new int[M[0].length];   
+
+	if (M[0].length > M.length) { // se la matrice è più larga che alta
+		int j = 0;
+		boolean down = true;
+
+		for (int i = 0; i < M[0].length; i++) {
+			serpentina[i] = M[j][i];
+
+			if (down) {
+				if (j == M.length - 1) { // ultima riga, ora risalgo
+					down = false;
+					j--;
+				} else {
+					j++;
+				}
+			} else { // sto salendo
+				if (j == 0) { // prima riga, ora riscendo
+					down = true;
+					j++;
+				} else {
+					j--;
+				}
+			}
+		}
+		return serpentina; 
+	}
+
+	// se la matrice è più alta che larga prendo la diagonale principale
+	for (int i = 0; i < M[0].length; i++) {
+		serpentina[i] = M[i][i];
+	}
+	return serpentina;
+}
